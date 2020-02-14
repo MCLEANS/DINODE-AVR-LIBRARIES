@@ -2,7 +2,17 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include "LCD.hpp"
+#include <stdlib.h>
 
+
+ISR(ADC_vect){
+    char adc_value[4];
+    itoa(ADCL,adc_value,10);
+    lcd.clear();
+    lcd.send_string("ADC VALUE: ");
+    lcd.send_string(adc_value);
+
+}
 
 int main(void){
 
@@ -30,7 +40,7 @@ int main(void){
     ADCSRA |= (1<<ADEN);
     //Start first ADC conversion
     ADCSRA |= (1<<ADSC);
-    
+
 
     
 
