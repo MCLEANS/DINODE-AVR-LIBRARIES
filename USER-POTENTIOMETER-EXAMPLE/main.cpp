@@ -7,11 +7,14 @@
 LCD lcd;
 
 ISR(ADC_vect){
-    char adc_value[4];
-    itoa(ADCH,adc_value,10);
+    char adc_result[4];
+    uint16_t adc_value = ADCL>>6;
+    adc_value |= (ADCH<<2);
+    itoa(adc_value,adc_result,10);
     lcd.clear();
     lcd.send_string("ADC VALUE: ");
-    lcd.send_string(adc_value);
+    lcd.send_string(adc_result);
+    _delay_ms(100);
     ADCSRA |= (1<<ADSC);
 
 }
