@@ -1,0 +1,275 @@
+   1               		.file	"main.cpp"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  17               	_GLOBAL__I_lcd:
+  18               	.LFB9:
+  19               	.LM1:
+  20               	/* prologue: function */
+  21               	/* frame size = 0 */
+  22               	.LBB17:
+  23               	.LBB18:
+  24               	.LM2:
+  25 0000 80E0      		ldi r24,lo8(lcd)
+  26 0002 90E0      		ldi r25,hi8(lcd)
+  27 0004 0E94 0000 		call _ZN3LCDC1Ev
+  28               	/* epilogue start */
+  29               	.LBE18:
+  30               	.LBE17:
+  31               	.LM3:
+  32 0008 0895      		ret
+  33               	.LFE9:
+  35               		.global __do_global_ctors
+  36               		.section .ctors,"a",@progbits
+  37 0000 0000      		.word	gs(_GLOBAL__I_lcd)
+  38               		.data
+  39               	.LC0:
+  40 0000 2020 2055 		.string	"   USER POT"
+  40      5345 5220 
+  40      504F 5400 
+  41               	.LC1:
+  42 000c 2020 2020 		.string	"    EXAMPLE"
+  42      4558 414D 
+  42      504C 4500 
+  43               		.text
+  44               	.global	main
+  46               	main:
+  47               	.LFB7:
+  48               	.LM4:
+  49 000a DF93      		push r29
+  50 000c CF93      		push r28
+  51 000e CDB7      		in r28,__SP_L__
+  52 0010 DEB7      		in r29,__SP_H__
+  53 0012 6897      		sbiw r28,24
+  54 0014 0FB6      		in __tmp_reg__,__SREG__
+  55 0016 F894      		cli
+  56 0018 DEBF      		out __SP_H__,r29
+  57 001a 0FBE      		out __SREG__,__tmp_reg__
+  58 001c CDBF      		out __SP_L__,r28
+  59               	/* prologue: function */
+  60               	/* frame size = 24 */
+  61               	.LBB19:
+  62               	.LM5:
+  63 001e 80E0      		ldi r24,lo8(lcd)
+  64 0020 90E0      		ldi r25,hi8(lcd)
+  65 0022 0E94 0000 		call _ZN3LCD10initializeEv
+  66               	.LM6:
+  67 0026 DE01      		movw r26,r28
+  68 0028 1196      		adiw r26,1
+  69 002a E0E0      		ldi r30,lo8(.LC0)
+  70 002c F0E0      		ldi r31,hi8(.LC0)
+  71 002e 8CE0      		ldi r24,lo8(12)
+  72               	.L4:
+  73 0030 0190      		ld r0,Z+
+  74 0032 0D92      		st X+,r0
+  75 0034 8150      		subi r24,lo8(-(-1))
+  76 0036 01F4      		brne .L4
+  77               	.LM7:
+  78 0038 DE01      		movw r26,r28
+  79 003a 1D96      		adiw r26,13
+  80 003c E0E0      		ldi r30,lo8(.LC1)
+  81 003e F0E0      		ldi r31,hi8(.LC1)
+  82 0040 8CE0      		ldi r24,lo8(12)
+  83               	.L5:
+  84 0042 0190      		ld r0,Z+
+  85 0044 0D92      		st X+,r0
+  86 0046 8150      		subi r24,lo8(-(-1))
+  87 0048 01F4      		brne .L5
+  88               	.LM8:
+  89 004a 80E0      		ldi r24,lo8(lcd)
+  90 004c 90E0      		ldi r25,hi8(lcd)
+  91 004e 0E94 0000 		call _ZN3LCD5clearEv
+  92               	.LM9:
+  93 0052 80E0      		ldi r24,lo8(lcd)
+  94 0054 90E0      		ldi r25,hi8(lcd)
+  95 0056 BE01      		movw r22,r28
+  96 0058 6F5F      		subi r22,lo8(-(1))
+  97 005a 7F4F      		sbci r23,hi8(-(1))
+  98 005c 0E94 0000 		call _ZN3LCD11send_stringEPc
+  99               	.LM10:
+ 100 0060 80E0      		ldi r24,lo8(lcd)
+ 101 0062 90E0      		ldi r25,hi8(lcd)
+ 102 0064 0E94 0000 		call _ZN3LCD8new_lineEv
+ 103               	.LM11:
+ 104 0068 80E0      		ldi r24,lo8(lcd)
+ 105 006a 90E0      		ldi r25,hi8(lcd)
+ 106 006c BE01      		movw r22,r28
+ 107 006e 635F      		subi r22,lo8(-(13))
+ 108 0070 7F4F      		sbci r23,hi8(-(13))
+ 109 0072 0E94 0000 		call _ZN3LCD11send_stringEPc
+ 110 0076 80E1      		ldi r24,lo8(10000)
+ 111 0078 97E2      		ldi r25,hi8(10000)
+ 112               	.LVL0:
+ 113               	.LBB20:
+ 114               	.LBB21:
+ 115               	.LBB22:
+ 116               	.LBB23:
+ 117               	.LBB24:
+ 118               	.LM12:
+ 119 007a 29E1      		ldi r18,lo8(25)
+ 120 007c 30E0      		ldi r19,hi8(25)
+ 121               	.L6:
+ 122 007e F901      		movw r30,r18
+ 123               	.LVL1:
+ 124               	/* #APP */
+ 125               	 ;  110 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 126 0080 3197      		1: sbiw r30,1
+ 127 0082 01F4      		brne 1b
+ 128               	 ;  0 "" 2
+ 129               	/* #NOAPP */
+ 130               	.LBE24:
+ 131               	.LBE23:
+ 132               	.LM13:
+ 133 0084 0197      		sbiw r24,1
+ 134               	.LM14:
+ 135 0086 01F4      		brne .L6
+ 136               	.LBE22:
+ 137               	.LBE21:
+ 138               	.LBE20:
+ 139               	.LM15:
+ 140 0088 3E9A      		sbi 39-32,6
+ 141               	.LM16:
+ 142 008a 3F98      		cbi 39-32,7
+ 143               	.LM17:
+ 144 008c 3D9A      		sbi 39-32,5
+ 145               	.LM18:
+ 146 008e 329A      		sbi 38-32,2
+ 147               	.LM19:
+ 148 0090 339A      		sbi 38-32,3
+ 149               	.LM20:
+ 150 0092 379A      		sbi 38-32,7
+ 151               	.LM21:
+ 152 0094 369A      		sbi 38-32,6
+ 153               	.L7:
+ 154 0096 00C0      		rjmp .L7
+ 155               	.LBE19:
+ 156               	.LFE7:
+ 158               		.data
+ 159               	.LC2:
+ 160 0018 4144 4320 		.string	"ADC VALUE: "
+ 160      5641 4C55 
+ 160      453A 2000 
+ 161               		.text
+ 162               	.global	__vector_16
+ 164               	__vector_16:
+ 165               	.LFB6:
+ 166               	.LM22:
+ 167 0098 1F92      		push __zero_reg__
+ 168 009a 0F92      		push r0
+ 169 009c 0FB6      		in r0,__SREG__
+ 170 009e 0F92      		push r0
+ 171 00a0 1124      		clr __zero_reg__
+ 172 00a2 EF92      		push r14
+ 173 00a4 FF92      		push r15
+ 174 00a6 0F93      		push r16
+ 175 00a8 1F93      		push r17
+ 176 00aa 2F93      		push r18
+ 177 00ac 3F93      		push r19
+ 178 00ae 4F93      		push r20
+ 179 00b0 5F93      		push r21
+ 180 00b2 6F93      		push r22
+ 181 00b4 7F93      		push r23
+ 182 00b6 8F93      		push r24
+ 183 00b8 9F93      		push r25
+ 184 00ba AF93      		push r26
+ 185 00bc BF93      		push r27
+ 186 00be EF93      		push r30
+ 187 00c0 FF93      		push r31
+ 188 00c2 DF93      		push r29
+ 189 00c4 CF93      		push r28
+ 190 00c6 00D0      		rcall .
+ 191 00c8 00D0      		rcall .
+ 192 00ca CDB7      		in r28,__SP_L__
+ 193 00cc DEB7      		in r29,__SP_H__
+ 194               	/* prologue: Signal */
+ 195               	/* frame size = 4 */
+ 196               	.LBB25:
+ 197               	.LM23:
+ 198 00ce 84B1      		in r24,36-32
+ 199 00d0 90E0      		ldi r25,lo8(0)
+ 200 00d2 7E01      		movw r14,r28
+ 201 00d4 0894      		sec
+ 202 00d6 E11C      		adc r14,__zero_reg__
+ 203 00d8 F11C      		adc r15,__zero_reg__
+ 204 00da B701      		movw r22,r14
+ 205 00dc 4AE0      		ldi r20,lo8(10)
+ 206 00de 50E0      		ldi r21,hi8(10)
+ 207 00e0 0E94 0000 		call itoa
+ 208               	.LM24:
+ 209 00e4 00E0      		ldi r16,lo8(lcd)
+ 210 00e6 10E0      		ldi r17,hi8(lcd)
+ 211 00e8 C801      		movw r24,r16
+ 212 00ea 0E94 0000 		call _ZN3LCD5clearEv
+ 213               	.LM25:
+ 214 00ee C801      		movw r24,r16
+ 215 00f0 60E0      		ldi r22,lo8(.LC2)
+ 216 00f2 70E0      		ldi r23,hi8(.LC2)
+ 217 00f4 0E94 0000 		call _ZN3LCD11send_stringEPc
+ 218               	.LM26:
+ 219 00f8 C801      		movw r24,r16
+ 220 00fa B701      		movw r22,r14
+ 221 00fc 0E94 0000 		call _ZN3LCD11send_stringEPc
+ 222               	/* epilogue start */
+ 223               	.LBE25:
+ 224               	.LM27:
+ 225 0100 0F90      		pop __tmp_reg__
+ 226 0102 0F90      		pop __tmp_reg__
+ 227 0104 0F90      		pop __tmp_reg__
+ 228 0106 0F90      		pop __tmp_reg__
+ 229 0108 CF91      		pop r28
+ 230 010a DF91      		pop r29
+ 231 010c FF91      		pop r31
+ 232 010e EF91      		pop r30
+ 233 0110 BF91      		pop r27
+ 234 0112 AF91      		pop r26
+ 235 0114 9F91      		pop r25
+ 236 0116 8F91      		pop r24
+ 237 0118 7F91      		pop r23
+ 238 011a 6F91      		pop r22
+ 239 011c 5F91      		pop r21
+ 240 011e 4F91      		pop r20
+ 241 0120 3F91      		pop r19
+ 242 0122 2F91      		pop r18
+ 243 0124 1F91      		pop r17
+ 244 0126 0F91      		pop r16
+ 245 0128 FF90      		pop r15
+ 246 012a EF90      		pop r14
+ 247 012c 0F90      		pop r0
+ 248 012e 0FBE      		out __SREG__,r0
+ 249 0130 0F90      		pop r0
+ 250 0132 1F90      		pop __zero_reg__
+ 251 0134 1895      		reti
+ 252               	.LFE6:
+ 254               	.global	lcd
+ 255               	.global	lcd
+ 256               		.section .bss
+ 259               	lcd:
+ 260 0000 00        		.skip 1,0
+ 301               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.cpp
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:2      *ABS*:0000003f __SREG__
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:3      *ABS*:0000003e __SP_H__
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:4      *ABS*:0000003d __SP_L__
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:5      *ABS*:00000034 __CCP__
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:17     .text:00000000 _GLOBAL__I_lcd
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:259    .bss:00000000 lcd
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:46     .text:0000000a main
+C:\Users\jacka\AppData\Local\Temp/ccmXm6qq.s:164    .text:00000098 __vector_16
+
+UNDEFINED SYMBOLS
+_ZN3LCDC1Ev
+__do_global_ctors
+_ZN3LCD10initializeEv
+_ZN3LCD5clearEv
+_ZN3LCD11send_stringEPc
+_ZN3LCD8new_lineEv
+itoa
+__do_copy_data
+__do_clear_bss

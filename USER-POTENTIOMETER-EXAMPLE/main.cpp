@@ -4,19 +4,21 @@
 #include "LCD.hpp"
 #include <stdlib.h>
 
+LCD lcd;
 
 ISR(ADC_vect){
     char adc_value[4];
-    itoa(ADCL,adc_value,10);
+    itoa(ADCH,adc_value,10);
     lcd.clear();
     lcd.send_string("ADC VALUE: ");
     lcd.send_string(adc_value);
+    ADCSRA |= (1<<ADSC);
 
 }
 
 int main(void){
 
-    LCD lcd;
+    
     lcd.initialize();
     
     char line_1[] = "   USER POT";
@@ -36,6 +38,8 @@ int main(void){
     ADCSRA |= (1<<ADPS2);
     //Enable ADC end of conversion interrupt
     ADCSRA |= (1<<ADIE);
+    //enable global interrupt
+    sei();
     //Enable the ADC
     ADCSRA |= (1<<ADEN);
     //Start first ADC conversion
