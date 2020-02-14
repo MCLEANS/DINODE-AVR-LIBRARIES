@@ -17,6 +17,24 @@ int main(void){
     lcd.send_string(line_2);
     _delay_ms(1000);
 
+    //set voltage reference to AVCC
+    ADMUX |= (1<<REFS0);
+    ADMUX &= ~(1<<REFS1);
+    //left adjust the ADC result
+    ADMUX |= (1<<ADLAR);
+    //set a prescaler division factor of 16
+    ADCSRA |= (1<<ADPS2);
+    //Enable ADC end of conversion interrupt
+    ADCSRA |= (1<<ADIE);
+    //Enable the ADC
+    ADCSRA |= (1<<ADEN);
+    //Start first ADC conversion
+    ADCSRA |= (1<<ADSC);
+    
+
+    
+
+
 
 
 
