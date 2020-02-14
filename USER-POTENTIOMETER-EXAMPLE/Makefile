@@ -1,6 +1,6 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
-# WinAVR Makefile Template written by Eric B. Weddington, Jörg Wunsch, et al.
+# WinAVR Makefile Template written by Eric B. Weddington, Jï¿½rg Wunsch, et al.
 #
 # Released to the Public Domain
 #
@@ -84,7 +84,7 @@ SRC = $(TARGET).c
 
 
 # List C++ source files here. (C dependencies are automatically generated.)
-CPPSRC = 
+CPPSRC = LCD.cpp
 
 
 # List Assembler source files here.
@@ -320,7 +320,7 @@ DEBUG_BACKEND = avarice
 GDBINIT_FILE = __avr_gdbinit
 
 # When using avarice settings for the JTAG
-JTAG_DEV = /dev/com1
+JTAG_DEV = /dev/com6
 
 # Debugging port used to communicate between GDB / avarice / simulavr.
 DEBUG_PORT = 4242
@@ -595,8 +595,8 @@ clean_list :
 	$(REMOVE) $(TARGET).map
 	$(REMOVE) $(TARGET).sym
 	$(REMOVE) $(TARGET).lss
-	$(REMOVE) $(SRC:%.c=$(OBJDIR)/%.o)
-	$(REMOVE) $(SRC:%.c=$(OBJDIR)/%.lst)
+	$(REMOVE) $(SRC:%.c=$(OBJDIR)/*.o)
+	$(REMOVE) $(SRC:%.c=$(OBJDIR)/*.lst)
 	$(REMOVE) $(SRC:.c=.s)
 	$(REMOVE) $(SRC:.c=.d)
 	$(REMOVE) $(SRC:.c=.i)
