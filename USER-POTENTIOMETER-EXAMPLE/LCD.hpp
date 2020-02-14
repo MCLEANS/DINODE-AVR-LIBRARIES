@@ -29,8 +29,8 @@
 #define RWPIN 1
 #define EnablePORT PORTB
 #define EnablePIN 2
-#define DELAYBEFOREENABLE 100
-#define DELAYBEFOREDISABLE 100
+#define DELAYBEFOREENABLE 6
+#define DELAYBEFOREDISABLE 5
 
 
 class LCD{
